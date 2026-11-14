@@ -716,6 +716,43 @@ dialog .button {
   font-size:14px;
   min-height:48px
 }
+.request-form {
+  display:grid;
+  gap:10px;
+  margin-top:20px;
+  font-size:16px
+}
+.request-form input,.request-form select {
+  width:100%;
+  min-width:0;
+  padding:12px;
+  border:1px solid var(--olive);
+  border-radius:8px;
+  background:var(--light);
+  color:var(--dark);
+  font:16px var(--body)
+}
+.request-form .button {
+  width:100%;
+  margin-top:12px
+}
+.request-result {
+  max-width:680px;
+  margin:10vh auto;
+  padding:24px
+}
+.request-result h1 {
+  font-size:clamp(24px,5vw,36px);
+  color:var(--olive)
+}
+.request-result p,.request-result ul {
+  margin:24px 0;
+  line-height:1.6;
+  font-size:18px
+}
+.request-result .button {
+  font-size:14px
+}
 @media(min-width:1921px) {
   .header {
     padding-top:50px

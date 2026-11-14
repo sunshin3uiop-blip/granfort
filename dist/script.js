@@ -2,31 +2,42 @@ const dialog = document.querySelector('#info-dialog');
 const dialogTitle = document.querySelector('#dialog-title');
 const dialogCopy = document.querySelector('#dialog-copy');
 const dialogContact = document.querySelector('#dialog-contact');
+const requestForm = document.querySelector('#request-form');
 
 const info = {
   'О компании': 'Мы — команда мастеров. Наша специализация — комплексный тюнинг интерьера: перетяжка кожей и алькантарой, шумоизоляция, установка мультимедиа и света.',
-  'Связаться с нами': 'Напишите нам: test@Grandfort.ru. Мы работаем с понедельника по пятницу, с 08:00 до 17:00 по московскому времени.',
+  'Связаться с нами': 'Оставьте имя и телефон, чтобы обсудить ваш автомобиль и пожелания.',
   'Акции': 'Информация об актуальных акциях пока не добавлена. Уточнить предложения можно по электронной почте.',
   'Доставка': 'Чтобы уточнить возможность, сроки и стоимость доставки, напишите нам и укажите свой город.',
   'Возврат': 'Для обсуждения возврата напишите нам, укажите товар и дату покупки.',
   'Бонусная программа': 'Условия бонусной программы пока не опубликованы. Подробности можно уточнить у нашей команды.',
-  'Privacy Policy': 'Текст политики конфиденциальности для этой демонстрационной страницы пока не добавлен. Формы на странице не отправляют и не сохраняют персональные данные.',
+  'Privacy Policy': 'Форма заявки сохраняет имя, телефон и выбранную услугу для обратной связи. Полный текст политики конфиденциальности для демонстрационной страницы пока не добавлен.',
   'Terms of Service': 'Это демонстрационная вёрстка. Публичные условия покупки и оказания услуг пока не добавлены.',
   'Социальные сети': 'Ссылки на официальные страницы пока не добавлены. Связаться с нами можно по электронной почте.'
 };
 
-function showInfo(title, copy) {
+function showInfo(title, copy, service = null) {
   dialogTitle.textContent = title;
   dialogCopy.textContent = copy;
   dialogContact.href = 'mailto:test@Grandfort.ru?subject=' + encodeURIComponent(title);
+  requestForm.hidden = service === null;
+  dialogContact.hidden = service !== null;
+  if (service !== null) {
+    requestForm.reset();
+    document.querySelector('#request-service').value = service;
+  }
   dialog.showModal();
 }
 
 document.querySelectorAll('[data-info]').forEach(button => {
-  button.addEventListener('click', () => showInfo(button.dataset.info, info[button.dataset.info]));
+  button.addEventListener('click', () => {
+    const title = button.dataset.info;
+    const service = title === 'Связаться с нами' ? 'Консультация' : null;
+    showInfo(title, info[title], service);
+  });
 });
 document.querySelectorAll('[data-service]').forEach(button => {
-  button.addEventListener('click', () => showInfo(button.dataset.service, 'Напишите нам, чтобы обсудить комплектацию, стоимость и сроки. Укажите модель автомобиля и пожелания к установке.'));
+  button.addEventListener('click', () => showInfo(button.dataset.service, 'Оставьте имя и телефон, чтобы обсудить комплектацию, стоимость и сроки.', button.dataset.service));
 });
 document.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
 dialog.addEventListener('click', event => {

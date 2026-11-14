@@ -105,6 +105,25 @@
     <div class="footer-bottom"><div><span>© 2022 Welcome. All right reserved.</span><button data-info="Privacy Policy">Privacy Policy</button><button data-info="Terms of Service">Terms of Service</button></div><div class="socials" aria-label="Социальные сети"><button data-info="Социальные сети" aria-label="Facebook">f</button><button data-info="Социальные сети" aria-label="Instagram">◎</button><button data-info="Социальные сети" aria-label="Twitter">𝕏</button></div></div>
   </footer>
 
-  <dialog id="info-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Закрыть">×</button><h2 id="dialog-title"></h2><p id="dialog-copy"></p><a class="button" id="dialog-contact" href="mailto:test@Grandfort.ru">Написать нам</a></dialog>
+  <dialog id="info-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" aria-label="Закрыть">×</button>
+    <h2 id="dialog-title"></h2>
+    <p id="dialog-copy"></p>
+    <form id="request-form" class="request-form" action="request.php" method="post" hidden>
+      <label for="request-name">Ваше имя</label>
+      <input id="request-name" name="name" type="text" minlength="2" maxlength="80" autocomplete="name" required>
+      <label for="request-phone">Телефон</label>
+      <input id="request-phone" name="phone" type="tel" minlength="10" maxlength="30" autocomplete="tel" placeholder="+7 999 123-45-67" required>
+      <label for="request-service">Услуга</label>
+      <select id="request-service" name="service" required>
+        <option value="Консультация">Консультация</option>
+        <option value="Индивидуальная разработка">Индивидуальная разработка</option>
+        <option value="Комплект защиты для JAC T9">Комплект защиты для JAC T9</option>
+        <option value="Комплект защиты для Haval H3">Комплект защиты для Haval H3</option>
+      </select>
+      <button class="button" type="submit">Оставить заявку</button>
+    </form>
+    <a class="button" id="dialog-contact" href="mailto:test@Grandfort.ru">Написать нам</a>
+  </dialog>
 </body>
 </html>
