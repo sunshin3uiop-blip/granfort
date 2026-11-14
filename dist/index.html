@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GRANFORT. Функциональные решения и оборудование для современных внедорожников и пикапов.">
+  <title>GRANFORT — создано для большего</title>
+  <link rel="stylesheet" href="assets/fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main>
+    <section class="hero" id="home" aria-label="GRANFORT">
+      <img class="hero-photo" src="assets/hero-original.jpg" alt="Haval H3 в горах">
+      <div class="hero-shade"></div>
+      <header class="header">
+        <button class="menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">☰</button>
+        <nav id="main-nav" class="nav" aria-label="Основная навигация">
+          <a href="#home">Главная</a><a href="#services">Каталог</a><button data-info="Акции">Акции</button><a href="#team">О нас</a><a href="#contacts">Контакты</a>
+        </nav>
+        <form class="search" role="search"><input type="search" aria-label="Поиск по услугам" placeholder="Поиск"><button type="submit" aria-label="Найти"><span class="search-icon"></span></button></form>
+        <button class="account" aria-label="Связаться с нами" data-info="Связаться с нами"><span class="user-icon"></span></button>
+        <a class="monogram header-mark" href="#home" aria-label="GRANFORT — на главную"><span>G</span><span>F</span></a>
+      </header>
+      <div class="hero-copy">
+        <div><h1>GRANFORT.</h1><p class="hero-slogan">СОЗДАНО ДЛЯ<br>БОЛЬШЕГО.</p></div>
+        <p class="hero-description">Функциональные решения и оборудование для современных внедорожников и пикапов.</p>
+        <a class="button hero-button" href="#services">Наша продукция <span aria-hidden="true">⌄</span></a>
+      </div>
+    </section>
+
+    <div class="brand-strip" aria-hidden="true"><span>GRANFORT.GRANFORT.GRANFORT.GRANFORT.GRANFORT.GRANFORT.GRANFORT.</span></div>
+
+    <section class="benefits" id="about">
+      <div class="benefits-intro">
+        <div><h2>Почему вам нужно<br>именно к нам</h2><button class="button more-button" data-info="О компании">Узнать больше <span aria-hidden="true">⌄</span></button></div>
+      </div>
+      <ul class="benefits-list">
+        <li><span class="benefit-icon" aria-hidden="true">☼</span><span>Гарантия<br>1 год</span></li>
+        <li><span class="benefit-icon" aria-hidden="true">▣</span><span>Фиксированные<br>сроки</span></li>
+        <li><span class="benefit-icon" aria-hidden="true">♧</span><span>Только<br>сертифицированные<br>материалы</span></li>
+      </ul>
+    </section>
+
+    <div class="brand-strip" aria-hidden="true"><span>GRANFORT.GRANFORT.GRANFORT.GRANFORT.GRANFORT.GRANFORT.GRANFORT.</span></div>
+
+    <section class="services section" id="services">
+      <h2>Наши услуги</h2>
+      <p class="search-status" role="status" hidden></p>
+      <div class="service-grid">
+        <button class="service-card" data-service="Индивидуальная разработка" data-search="индивидуально разработка тюнинг установка">
+          <img src="assets/service-custom.png" alt="Работа мастера: искры от обработки металла">
+          <span class="card-caption"><span>Сделаем<br>индивидуально<br>для вас</span><span class="chevron" aria-hidden="true">›</span></span>
+        </button>
+        <button class="service-card jac" data-service="Комплект защиты для JAC T9" data-search="jac t9 джак комплект защита">
+          <img src="assets/service-jac.png" alt="Пикап JAC T9">
+          <span class="card-caption"><span>Комплект<br>защиты для<br>JAC T9</span><span class="chevron" aria-hidden="true">›</span></span>
+        </button>
+        <button class="service-card" data-service="Комплект защиты для Haval H3" data-search="haval h3 хавал комплект защита">
+          <img src="assets/service-haval.png" alt="Внедорожник Haval H3">
+          <span class="card-caption"><span>Комплект<br>защиты для<br>Haval H3</span><span class="chevron" aria-hidden="true">›</span></span>
+        </button>
+      </div>
+      <div class="service-lines" aria-hidden="true"><div></div><div></div></div>
+    </section>
+
+    <section class="team" id="team">
+      <div class="featured-person">
+        <span class="team-symbol" aria-hidden="true">GF</span>
+        <img id="featured-photo" src="assets/olga.png" alt="Ольга Антонова, автотюнер">
+        <div class="featured-caption"><h3 id="featured-name">Ольга Антонова</h3><p id="featured-role">Автотюнер</p></div>
+      </div>
+      <div class="team-main">
+        <h2 class="team-heading-desktop">Кто будет<br>работать над<br>вашей машиной</h2>
+        <h2 class="team-heading-mobile">Над вашей машиной будут<br>работать наши специалисты!</h2>
+        <div class="team-controls"><button class="team-prev" aria-label="Предыдущий специалист">‹‹</button><button class="team-next" aria-label="Следующий специалист">››</button></div>
+        <div class="team-portraits">
+          <button class="person" data-person="1" aria-label="Дарья Плотникова, автомеханик"><img src="assets/daria.png" alt="Дарья Плотникова"></button>
+          <button class="person selected" data-person="2" aria-label="Алина Боброва, автомеханик"><img src="assets/alina.png" alt="Алина Боброва"></button>
+          <button class="person" data-person="3" aria-label="Михаил Московский, автотюнер"><img src="assets/mikhail.png" alt="Михаил Московский"></button>
+        </div>
+        <div class="mobile-person-caption" aria-live="polite"><p id="mobile-person-name">Алина Боброва</p><span id="mobile-person-role">автомеханик</span></div>
+      </div>
+    </section>
+
+    <section class="faq section" id="faq">
+      <h2><span class="desktop-text">Частые вопросы</span><span class="mobile-text">Отвечаем на ваши вопросы</span></h2>
+      <div class="faq-layout"><div class="faq-list">
+        <details open><summary>Можно ли сделать дешевле?<span class="faq-toggle" aria-hidden="true"></span></summary><p>Цена зависит от трех факторов: материал, объем работ и сложность конструкции. Мы можем предложить бюджетные варианты комбинирования материалов, чтобы снизить стоимость без потери качества.</p></details>
+        <details><summary>Вы работаете с моими материалами?<span class="faq-toggle" aria-hidden="true"></span></summary><p>Возможность работы с вашими материалами можно обсудить с мастером. Напишите нам и расскажите, какие материалы вы хотите использовать.</p></details>
+        <details><summary>Какая гарантия на работы?<span class="faq-toggle" aria-hidden="true"></span></summary><p>На выполненные работы предоставляется гарантия 1 год. Подробные условия уточняйте при оформлении заказа.</p></details>
+      </div><div class="faq-track" aria-hidden="true"><span>⌄</span></div></div>
+    </section>
+  </main>
+
+  <footer id="contacts">
+    <div class="footer-main">
+      <a class="monogram footer-mark" href="#home" aria-label="GRANFORT — на главную"><span>G</span><span>F</span></a>
+      <div class="footer-column"><h3>Навигация</h3><a href="#home">Главная</a><a href="#services">Расценки</a><button data-info="Акции">Акции</button><a href="#team">О нас</a><a href="#contacts">Контакты</a></div>
+      <div class="footer-column customer-links"><h3>Покупателям</h3><button data-info="Доставка">Доставка</button><button data-info="Возврат">Возврат</button><a href="#faq">Частые вопросы</a><button data-info="Бонусная программа">Бонусная программа</button></div>
+      <div class="footer-column contact-links"><h3>Контакты</h3><p><span aria-hidden="true">◷</span>Пн - Пт: 08:00–17:00 (МСК)<br>Сб - Вс: выходной</p><a href="https://yandex.ru/maps/?text=Тольятти%20Ботаническая%2024" target="_blank" rel="noopener"><span aria-hidden="true">♧</span>Тольятти, ул. Ботаническая 24, ГСК Модель, Бокс 351</a><a href="mailto:test@Grandfort.ru"><span aria-hidden="true">✉</span>test@Grandfort.ru</a></div>
+      <a class="map" href="https://yandex.ru/maps/?text=Тольятти%20Ботаническая%2024" target="_blank" rel="noopener" aria-label="Открыть адрес на карте"><img src="assets/map.png" alt="Карта Тольятти"></a>
+    </div>
+    <div class="footer-bottom"><div><span>© 2022 Welcome. All right reserved.</span><button data-info="Privacy Policy">Privacy Policy</button><button data-info="Terms of Service">Terms of Service</button></div><div class="socials" aria-label="Социальные сети"><button data-info="Социальные сети" aria-label="Facebook">f</button><button data-info="Социальные сети" aria-label="Instagram">◎</button><button data-info="Социальные сети" aria-label="Twitter">𝕏</button></div></div>
+  </footer>
+
+  <dialog id="info-dialog" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Закрыть">×</button><h2 id="dialog-title"></h2><p id="dialog-copy"></p><a class="button" id="dialog-contact" href="mailto:test@Grandfort.ru">Написать нам</a></dialog>
+</body>
+</html>
