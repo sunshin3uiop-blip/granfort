@@ -14,6 +14,25 @@ php -S 127.0.0.1:3000 -t dist
 
 Без PHP можно открыть `dist/index.html` для просмотра вёрстки, но отправка заявок работать не будет. GitHub Pages также не выполняет PHP.
 
+## Vercel
+
+В корне репозитория есть `vercel.json`. Он запускает `node scripts/build-vercel.cjs` и публикует папку `vercel-public`. Скрипт берёт HTML, CSS, JavaScript, шрифты и фотографии из `dist`; PHP-исходники в статическую публикацию не попадают.
+
+При импорте этого репозитория в Vercel укажите:
+
+- **Root Directory** — корень репозитория, где лежит `vercel.json`; не `dist`.
+- **Framework Preset** — `Other`.
+- **Build Command** — `node scripts/build-vercel.cjs` (берётся из конфигурации).
+- **Output Directory** — `vercel-public` (берётся из конфигурации).
+
+Если проект уже создан, проверьте Root Directory и уберите старые ручные настройки сборки, противоречащие `vercel.json`, затем выполните Redeploy.
+
+Эта настройка публикует **только внешний вид сайта**. Форма заявки и админка в таком статическом деплое не работают. Для них нужен PHP-сервер с постоянным хранилищем. Текущий бэкенд использует `data/requests.jsonl`, файл пароля и PHP-сеансы, поэтому его нельзя просто перенести в обычную статическую публикацию Vercel.
+
+Vercel поддерживает запуск произвольного кода через Container Runtime, но для размещения этого PHP-бэкенда там потребуется адаптировать хранение заявок, пароля и сеансов к внешнему постоянному хранилищу. Для сохранения текущей простой версии можно разместить весь проект на PHP-хостинге, назначив `dist` корнем сайта.
+
+Документация: [настройка Output Directory](https://vercel.com/docs/project-configuration/vercel-json#outputdirectory), [Container Runtime](https://vercel.com/docs/functions/runtimes/container), [файловая система Vercel Functions](https://vercel.com/docs/functions/runtimes#file-system-support).
+
 ## Файлы
 
 - `dist/index.html` — разметка.
