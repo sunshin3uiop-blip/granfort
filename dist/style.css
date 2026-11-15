@@ -84,17 +84,22 @@ h2 {
 }
 .hero {
   position:relative;
-  height:clamp(600px,51.46vw,988px);
+  display:grid;
+  grid-template-columns:minmax(0,60fr) minmax(0,40fr);
+  grid-template-rows:auto 1fr;
+  min-height:clamp(600px,51.46vw,988px);
   overflow:hidden;
   color:var(--dark)
 }
 .hero-photo {
   position:absolute;
-  width:146.28%;
-  height:155.51%;
-  max-width:none;
-  left:-37.32%;
-  top:-33.09%
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  transform:scale(1.46);
+  transform-origin:81% 55%
 }
 .hero-shade {
   position:absolute;
@@ -104,6 +109,8 @@ h2 {
 .header {
   position:relative;
   z-index:2;
+  grid-column:1 / -1;
+  grid-row:1;
   display:flex;
   align-items:center;
   gap:4.45%;
@@ -217,10 +224,12 @@ h2 {
   display:none
 }
 .hero-copy {
-  position:absolute;
-  left:62.24%;
-  top:30.4%;
-  width:26%;
+  position:relative;
+  grid-column:2;
+  grid-row:2;
+  align-self:center;
+  min-width:0;
+  margin:clamp(32px,4vw,76px) 28% clamp(40px,5vw,96px) 5.6%;
   display:flex;
   flex-direction:column;
   align-items:flex-start;
@@ -250,6 +259,7 @@ h2 {
 .hero-button {
   margin-top:0;
   width:80%;
+  max-width:372px;
   padding-inline:12px;
   min-height:clamp(60px,4.32vw,83px);
   background:rgba(119,136,91,.8)
@@ -329,7 +339,7 @@ h2 {
   position:relative;
   isolation:isolate;
   min-width:0;
-  height:clamp(330px,34.68vw,666px);
+  aspect-ratio:556 / 666;
   padding:0;
   overflow:hidden;
   background:var(--dark);
@@ -340,7 +350,8 @@ h2 {
   inset:0;
   width:100%;
   height:100%;
-  object-fit:fill;
+  object-fit:cover;
+  object-position:center;
   z-index:-1
 }
 .service-card.jac:after {
@@ -387,8 +398,10 @@ h2 {
 .team {
   position:relative;
   display:grid;
-  grid-template-columns:48% 52%;
-  height:clamp(620px,47.917vw,920px);
+  grid-template-columns:minmax(0,48fr) minmax(0,52fr);
+  align-items:end;
+  gap:clamp(20px,2vw,40px);
+  padding:clamp(48px,6vw,112px) 5.15% 0;
   background:var(--dark);
   overflow:hidden
 }
@@ -403,22 +416,24 @@ h2 {
 }
 .featured-person {
   position:relative;
-  padding-top:12.6%;
-  height:100%;
-  min-width:0
+  width:min(100%,28.9vw,555px);
+  aspect-ratio:555 / 805;
+  min-width:0;
+  justify-self:end;
+  align-self:end
 }
 .featured-person>img {
   position:absolute;
-  bottom:0;
-  left:33.4%;
-  width:60.2%;
-  height:87.4%;
-  object-fit:fill
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center top
 }
 .team-symbol {
   position:absolute;
-  left:15.8%;
-  top:12.6%;
+  left:-20%;
+  top:0;
   font:700 clamp(50px,6vw,115px)/1 var(--heading);
   color:#202521;
   opacity:.3;
@@ -426,24 +441,28 @@ h2 {
 }
 .featured-caption {
   position:absolute;
-  left:23%;
-  top:74.3%;
-  white-space:nowrap
+  left:0;
+  right:12px;
+  bottom:clamp(24px,7vw,134px);
+  overflow-wrap:break-word;
+  text-shadow:0 2px 8px #000
 }
 .featured-caption h3 {
-  font-size:clamp(25px,2.292vw,44px);
+  font-size:clamp(20px,2.292vw,44px);
   font-weight:600
 }
 .featured-caption p {
-  font-size:clamp(21px,1.5625vw,30px);
+  font-size:clamp(17px,1.5625vw,30px);
   margin-top:12px
 }
 .team-main {
-  padding-top:11.6%;
   position:relative;
   display:flex;
   flex-direction:column;
-  align-items:flex-start
+  align-items:flex-start;
+  justify-content:flex-end;
+  align-self:stretch;
+  min-width:0
 }
 .team-main>h2 {
   font-size:clamp(32px,3.23vw,62px);
@@ -467,9 +486,11 @@ h2 {
   font:30px/1 var(--body)
 }
 .team-portraits {
-  display:flex;
-  width:91%;
-  height:46%;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  width:100%;
+  height:clamp(200px,22vw,423px);
   align-items:flex-start;
   align-self:flex-end;
   margin-top:auto;
@@ -477,7 +498,7 @@ h2 {
 }
 .person {
   min-width:0;
-  width:33.333%;
+  width:100%;
   height:100%;
   background:none;
   padding:0;
@@ -488,12 +509,10 @@ h2 {
 }
 .person img {
   width:100%;
-  height:auto;
-  display:block
-}
-.person:first-child img {
-  width:88%;
-  margin-inline:auto
+  height:100%;
+  display:block;
+  object-fit:cover;
+  object-position:center top
 }
 .mobile-person-caption {
   display:none
@@ -776,6 +795,15 @@ dialog .button {
   }
 }
 @media(max-width:1100px) and (min-width:701px) {
+  .hero {
+    grid-template-columns:minmax(0,55fr) minmax(0,45fr)
+  }
+  .hero-copy {
+    margin-inline:4% 10%
+  }
+  .hero h1 {
+    font-size:clamp(28px,3.34vw,36px)
+  }
   .header {
     width:90%;
     gap:24px
@@ -788,8 +816,12 @@ dialog .button {
     padding:10px
   }
   .team-main>h2 {
-    font-size:34px;
+    font-size:clamp(24px,3.1vw,34px);
     margin-left:10%
+  }
+  .featured-person {
+    width:100%;
+    max-width:360px
   }
   .team-controls {
     margin-left:10%;
@@ -809,41 +841,100 @@ dialog .button {
     gap:12px
   }
 }
+@media(max-width:1000px) {
+  .hero {
+    grid-template-columns:minmax(0,1fr);
+    min-height:clamp(600px,165.53vw,780px)
+  }
+  .hero-photo {
+    transform:none;
+    object-position:46% center
+  }
+  .hero-shade {
+    background:linear-gradient(to bottom,#ffffff38,transparent 55%)
+  }
+  .hero-copy {
+    grid-column:1;
+    align-self:stretch;
+    margin:58px 20px 34px;
+    align-items:center;
+    text-align:center;
+    gap:0
+  }
+  .hero h1 {
+    font-size:clamp(30px,7.77vw,42px);
+    line-height:1.05
+  }
+  .hero-slogan {
+    font-size:clamp(18px,4.37vw,24px);
+    margin-top:9px;
+    line-height:1.1
+  }
+  .hero-description {
+    font-size:clamp(12px,3vw,16px);
+    line-height:1.4;
+    max-width:300px;
+    margin-top:28px
+  }
+  .hero-button {
+    font-size:clamp(12px,2.9vw,16px);
+    width:clamp(186px,45vw,240px);
+    min-height:48px;
+    margin-top:auto;
+    border-radius:9px;
+    background:#77885bf0
+  }
+}
 @media(max-width:700px) {
   h2 {
     font-size:18px
-  }
-  .hero {
-    height:682px;
-    min-height:0;
-    background:url('assets/hero-mobile.png') center bottom/cover
-  }
-  .hero-photo,.hero-shade {
-    display:none
   }
   .header {
     width:90%;
     gap:14px;
     padding-top:20px;
     justify-content:space-between;
-    font-size:9px;
+    font-size:12px;
     letter-spacing:.04em
   }
   .nav {
-    gap:8px
+    display:none;
+    position:absolute;
+    top:64px;
+    left:0;
+    right:0;
+    padding:18px;
+    background:var(--light);
+    font-size:13px;
+    border-radius:8px;
+    flex-wrap:wrap;
+    gap:16px
+  }
+  .nav.open {
+    display:flex
+  }
+  .menu-toggle {
+    display:block;
+    background:none;
+    color:var(--dark);
+    font-size:22px;
+    padding:0
   }
   .nav button {
     font-size:inherit
   }
   .search {
-    width:27%;
-    min-height:24px;
-    padding:4px 8px;
+    flex:1;
+    min-width:0;
+    width:auto;
+    max-width:450px;
+    min-height:36px;
+    padding:8px 12px;
     border-radius:5px;
     gap:4px
   }
   .search input {
-    font-size:9px;
+    font-size:13px;
     letter-spacing:0
   }
   .search-icon {
@@ -868,38 +959,7 @@ dialog .button {
     font-size:18px
   }
   .hero-copy {
-    left:0;
-    top:106px;
-    width:100%;
-    height:542px;
-    align-items:center;
-    text-align:center;
-    gap:0
-  }
-  .hero h1 {
-    font-size:32px;
-    line-height:1.05
-  }
-  .hero-slogan {
-    font-size:18px;
-    margin-top:9px;
-    line-height:1.1
-  }
-  .hero-description {
-    font-size:12px;
-    line-height:1.3;
-    max-width:244px;
-    margin-top:34px
-  }
-  .hero-button {
-    font-size:12px;
-    width:186px;
-    min-height:42px;
-    border-radius:9px;
-    gap:7px;
-    padding:9px 12px;
-    margin-top:auto;
-    background:#77885bf0
+    margin-top:44px
   }
   .button span {
     font-size:20px
@@ -959,10 +1019,6 @@ dialog .button {
   .service-grid {
     gap:5px
   }
-  .service-card {
-    height:180px;
-    min-height:0
-  }
   .card-caption {
     gap:3px;
     padding:0 8px 12px 10px;
@@ -987,16 +1043,14 @@ dialog .button {
     margin-bottom:10px
   }
   .team {
-    height:338px;
-    min-height:0;
-    display:block
+    display:block;
+    padding:0
   }
   .featured-person {
     display:none
   }
   .team-main {
     padding:36px 28px 30px;
-    height:100%;
     align-items:center;
     background:radial-gradient(ellipse at 48% 62%,#77885b26,transparent 65%)
   }
@@ -1014,33 +1068,34 @@ dialog .button {
     margin:0
   }
   .team-controls {
-    position:absolute;
-    left:15px;
-    right:15px;
-    top:156px;
-    margin:0;
-    justify-content:space-between;
-    gap:0
+    order:3;
+    margin:16px 0 0;
+    justify-content:center;
+    gap:24px
   }
   .team-controls button {
-    width:30px;
-    height:18px;
-    font-size:14px;
+    width:56px;
+    height:44px;
+    font-size:24px;
     background:#7d8079;
     color:var(--light)
   }
   .team-portraits {
-    width:82%;
-    height:168px;
+    order:1;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.25fr) minmax(0,1fr);
+    gap:8px;
+    width:min(100%,480px);
+    height:clamp(180px,45vw,280px);
     margin:23px 0 0;
     align-self:center;
-    align-items:center;
+    align-items:start;
     position:relative;
     z-index:1;
     overflow:hidden
   }
   .person {
-    height:132px;
+    height:calc(100% - 18px);
+    margin-top:18px;
     align-items:flex-start;
     opacity:.66
   }
@@ -1048,16 +1103,15 @@ dialog .button {
     height:100%;
     width:100%;
     object-fit:cover;
-    object-position:top
-  }
-  .person:first-child img {
-    width:100%
+    object-position:center top
   }
   .person.selected {
-    height:168px;
+    height:100%;
+    margin-top:0;
     opacity:1
   }
   .mobile-person-caption {
+    order:2;
     display:block;
     margin-top:11px;
     text-align:center;
@@ -1204,38 +1258,6 @@ dialog .button {
 @media(max-width:390px) {
   .header {
     gap:10px
-  }
-  .nav {
-    display:none;
-    position:absolute;
-    top:53px;
-    left:0;
-    right:0;
-    padding:18px;
-    background:var(--light);
-    font-size:13px;
-    border-radius:8px;
-    flex-wrap:wrap;
-    gap:16px
-  }
-  .nav.open {
-    display:flex
-  }
-  .menu-toggle {
-    display:block;
-    background:none;
-    color:var(--dark);
-    font-size:19px;
-    padding:0
-  }
-  .search {
-    width:65%
-  }
-  .hero {
-    background-size:auto 682px
-  }
-  .hero h1 {
-    font-size:30px
   }
   .card-caption {
     font-size:8px;

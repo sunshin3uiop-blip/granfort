@@ -84,11 +84,11 @@ const people = [
   { name: 'Алина Боброва', role: 'Автомеханик', photo: 'assets/alina.png' },
   { name: 'Михаил Московский', role: 'Автотюнер', photo: 'assets/mikhail.png' }
 ];
-let currentPerson = window.matchMedia('(max-width: 700px)').matches ? 2 : 0;
+const teamMedia = window.matchMedia('(max-width: 700px)');
+let currentPerson = teamMedia.matches ? 2 : 0;
 function selectPerson(index) {
   currentPerson = (index + people.length) % people.length;
-  const mobile = window.matchMedia('(max-width: 700px)').matches;
-  if (mobile && currentPerson === 0) currentPerson = index < 1 ? 3 : 1;
+  const mobile = teamMedia.matches;
   const person = people[currentPerson];
   document.querySelector('#featured-photo').src = person.photo;
   document.querySelector('#featured-photo').alt = person.name + ', ' + person.role.toLowerCase();
@@ -97,14 +97,12 @@ function selectPerson(index) {
   document.querySelector('#mobile-person-name').textContent = person.name;
   document.querySelector('#mobile-person-role').textContent = person.role.toLowerCase();
   document.querySelectorAll('.person').forEach((button, position) => {
-    if (mobile) {
-      const portraitIndex = ((currentPerson - 1 + position - 1 + 3) % 3) + 1;
-      const portrait = people[portraitIndex];
-      button.dataset.person = String(portraitIndex);
-      button.querySelector('img').src = portrait.photo;
-      button.querySelector('img').alt = portrait.name;
-      button.setAttribute('aria-label', portrait.name + ', ' + portrait.role.toLowerCase());
-    }
+    const portraitIndex = mobile ? (currentPerson + position - 1 + people.length) % people.length : position + 1;
+    const portrait = people[portraitIndex];
+    button.dataset.person = String(portraitIndex);
+    button.querySelector('img').src = portrait.photo;
+    button.querySelector('img').alt = portrait.name;
+    button.setAttribute('aria-label', portrait.name + ', ' + portrait.role.toLowerCase());
     const selected = Number(button.dataset.person) === currentPerson;
     button.classList.toggle('selected', selected);
     button.setAttribute('aria-pressed', String(selected));
@@ -113,6 +111,8 @@ function selectPerson(index) {
 document.querySelectorAll('.person').forEach(button => button.addEventListener('click', () => selectPerson(Number(button.dataset.person))));
 document.querySelector('.team-prev').addEventListener('click', () => selectPerson(currentPerson - 1));
 document.querySelector('.team-next').addEventListener('click', () => selectPerson(currentPerson + 1));
+teamMedia.addEventListener('change', () => selectPerson(currentPerson));
+selectPerson(currentPerson);
 
 document.querySelectorAll('.faq details').forEach(item => item.addEventListener('toggle', () => {
   if (item.open) document.querySelectorAll('.faq details').forEach(other => { if (other !== item) other.open = false; });
