@@ -60,6 +60,7 @@ header { display: flex; justify-content: space-between; align-items: center; gap
 nav { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 nav form { margin: 0; }
 .count { color: #c3c7bc; }
+.pagination { margin-top: 24px; }
 .empty { padding: 40px 24px; border: 1px solid #40463b; border-radius: 8px; background: #212426; }
 .empty p { margin-bottom: 0; }
 .table-wrap { width: 100%; overflow-x: auto; border: 1px solid #40463b; border-radius: 8px; }

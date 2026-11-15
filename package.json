@@ -1,0 +1,12 @@
+{
+  "name": "granfort",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build-vercel.cjs",
+    "dev": "node --env-file-if-exists=.env scripts/dev.cjs",
+    "test": "node --test tests/*.test.cjs",
+    "import": "node --env-file-if-exists=.env scripts/import-requests.cjs"
+  },
+  "engines": { "node": "24.x" }
+}

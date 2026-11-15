@@ -10,3 +10,6 @@ Thumbs.db
 .idea/
 .vercel/
 vercel-public/
+.env
+.env.*
+!.env.example
